@@ -15,7 +15,6 @@ public class SchoolController {
     public String getAll(Model model) {
 
         model.addAttribute("schools", repository.findAll());
-
         return "school_get_all";
     }
 
@@ -23,7 +22,6 @@ public class SchoolController {
     public String getById(Model model, @RequestParam Long id) {
 
         model.addAttribute("school", repository.findById(id));
-
         return "school_get";
     }
 
@@ -31,7 +29,6 @@ public class SchoolController {
     public String getByCountry(Model model, @RequestParam String country) {
 
         model.addAttribute("schools", repository.findByCountry(country));
-
         return "school_get_all";
     }
 }

@@ -19,6 +19,7 @@ public class SchoolRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -33,13 +34,15 @@ public class SchoolRepository {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 Long capacity = resultSet.getLong("capacity");
-                String country = resultSet.getString("capacity");
+                String country = resultSet.getString("country");
                 schools.add(new School(id, name, capacity, country));
             }
             return schools;
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
@@ -53,6 +56,7 @@ public class SchoolRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -63,14 +67,17 @@ public class SchoolRepository {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+
                 String name = resultSet.getString("name");
                 Long capacity = resultSet.getLong("capacity");
                 String country = resultSet.getString("country");
                 return new School(id, name, capacity, country);
             }
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
@@ -84,6 +91,7 @@ public class SchoolRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -96,6 +104,7 @@ public class SchoolRepository {
             List<School> schools = new ArrayList<>();
 
             while (resultSet.next()) {
+
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 Long capacity = resultSet.getLong("capacity");
@@ -103,8 +112,10 @@ public class SchoolRepository {
             }
             return schools;
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);

@@ -15,7 +15,6 @@ public class WizardController {
     public String getAll(Model model) {
 
         model.addAttribute("wizards", repository.findAll());
-
         return "wizard_get_all";
     }
 
@@ -23,7 +22,6 @@ public class WizardController {
     public String getById(Model model, @RequestParam Long id) {
 
         model.addAttribute("wizard", repository.findById(id));
-
         return "wizard_get";
     }
 
@@ -31,7 +29,6 @@ public class WizardController {
     public String getByLastName(Model model, @RequestParam String lastName) {
 
         model.addAttribute("wizards", repository.findByLastName(lastName));
-
         return "wizard_get_all";
     }
 }

@@ -24,6 +24,7 @@ public class WizardRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -35,6 +36,7 @@ public class WizardRepository {
             List<Wizard> wizards = new ArrayList<>();
 
             while (resultSet.next()) {
+
                 Long id = resultSet.getLong("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
@@ -46,8 +48,10 @@ public class WizardRepository {
             }
             return wizards;
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
@@ -61,6 +65,7 @@ public class WizardRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -71,6 +76,7 @@ public class WizardRepository {
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
                 Date birthday = resultSet.getDate("birthday");
@@ -80,8 +86,10 @@ public class WizardRepository {
                 return new Wizard(id, firstName, lastName, birthday, birthPlace, biography, muggle);
             }
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
@@ -95,6 +103,7 @@ public class WizardRepository {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+
             connection = DriverManager.getConnection(
                     DB_URL, DB_USER, DB_PASSWORD
             );
@@ -107,6 +116,7 @@ public class WizardRepository {
             List<Wizard> wizards = new ArrayList<>();
 
             while (resultSet.next()) {
+
                 Long id = resultSet.getLong("id");
                 String firstName = resultSet.getString("first_name");
                 Date birthday = resultSet.getDate("birthday");
@@ -117,8 +127,10 @@ public class WizardRepository {
             }
             return wizards;
         } catch (SQLException e) {
+
             e.printStackTrace();
         } finally {
+
             JdbcUtils.closeResultSet(resultSet);
             JdbcUtils.closeStatement(statement);
             JdbcUtils.closeConnection(connection);
